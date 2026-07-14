@@ -50,17 +50,17 @@ path = "/mcp"       # Leave this alone. /mcp is default for dependencies.
 Generate a token with `openssl rand -hex 32` and paste it into `[auth]`, same drill as the server repo. Restart the stack after any config change:
 
 ```bash
-docker compose restart mcp-server
+docker compose restart mcp-server-remote
 ```
 
 ## User Guide | Operation
 
-| Command                                | What it does                                  |
-| -------------------------------------- | --------------------------------------------- |
-| `docker compose up -d --build`         | Build images and start both containers        |
-| `docker compose logs -f mcp-server`    | Tail the MCP server logs                      |
-| `docker compose exec mcp-server bash`  | Shell into the server container (no SSH here) |
-| `docker compose down`                  | Stop and remove the stack                     |
+| Command                                       | What it does                                  |
+| --------------------------------------------- | --------------------------------------------- |
+| `docker compose up -d --build`                | Build images and start both containers        |
+| `docker compose logs -f mcp-server-remote`    | Tail the MCP server logs                      |
+| `docker compose exec mcp-server-remote bash`         | Shell into the server container (no SSH here) |
+| `docker compose down`                         | Stop and remove the stack                     |
 
 Only nginx publishes a port to the host. The MCP server container has no published ports, it is only accessible via the internal Docker network. If the sandbox gets wrecked, `docker compose down && docker compose up -d --build` gives you a clean slate again.
 
