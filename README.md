@@ -67,7 +67,7 @@ Only nginx publishes a port to the host. The MCP server container has no publish
 ## Project Status
 
 - [x] Create sandbox repo
-- [ ] Write Dockerfile for mcp-server-remote
+- [x] Write Dockerfile for mcp-server-remote
 - [ ] Write nginx reverse proxy config
 - [ ] Write docker-compose.yml wiring both containers
 - [ ] Connect from mcp-client-console through nginx end to end
