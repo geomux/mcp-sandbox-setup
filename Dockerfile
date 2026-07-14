@@ -4,7 +4,7 @@
 FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y \
-    python3 python3-pip pipx curl \
+    python3 pipx \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pipx install mcp-server-remote
