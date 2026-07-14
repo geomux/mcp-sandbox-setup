@@ -1,0 +1,13 @@
+# config.toml
+# Host side editable config file bind mounted to mcp-server-remote package config file inside server container
+
+[server]
+name = "Sandbox_1"      # change as desired (recommend to match name used client side for this box)
+host = "0.0.0.0"        # open to everything outside container (i.e. nginx reverse proxy)
+port = 9000             # default port for server
+path = "/mcp"           # default for dependencies
+
+[auth]
+token = "paste-here"    # :~$ openssl rand -hex 32, then paste result here
+
+
