@@ -1,0 +1,22 @@
+# docker-compose.yml
+# Docker Compose file that builds containers the ngix and mcp-server-remote images (using Dockerfile & nginx.conf), creates internal DNS to network between containers.
+
+services:
+
+    nginx:
+        image: nginx:1.27
+        container_name: nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+        depends_on:
+            - mcp-server-remote
+
+    mcp-server-remote:
+        build: .
+        container_name: mcp-server-remote
+        volumes:
+            - ./config/config.toml:/root/.config/mcp-server-remote/config.toml
+        restart: unless-stopped
+
