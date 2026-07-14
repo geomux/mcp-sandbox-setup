@@ -59,10 +59,10 @@ docker compose restart mcp-server-remote
 | --------------------------------------------- | --------------------------------------------- |
 | `docker compose up -d --build`                | Build images and start both containers        |
 | `docker compose logs -f mcp-server-remote`    | Tail the MCP server logs                      |
-| `docker compose exec mcp-server-remote bash`         | Shell into the server container (no SSH here) |
+| `docker compose exec mcp-server-remote bash`         | Shell into the server container (no SSH needed) |
 | `docker compose down`                         | Stop and remove the stack                     |
 
-Only nginx publishes a port to the host. The MCP server container has no published ports, it is only accessible via the internal Docker network. If the sandbox gets wrecked, `docker compose down && docker compose up -d --build` gives you a clean slate again.
+Only nginx publishes a port to the host. The MCP server container has no published ports, it is only accessible via the internal Docker network. If the sandbox gets wrecked by bad code or prompt injection, `docker compose down && docker compose up -d --build` creates a clean slate again.
 
 ## Related / Required Repos
 
