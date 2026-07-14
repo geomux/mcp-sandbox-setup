@@ -29,6 +29,11 @@ cd mcp-sandbox-setup
 # edit config/config.toml first (see Configuration below)
 docker compose up -d --build
 ```
+**Install for Docker Engine and Docker Compose prior (if needed)**
+```bash
+apt-get update && apt-get install -y curl
+curl -fsSL https://get.docker.com | sh
+```
 
 ## User Guide | Configuration
 
