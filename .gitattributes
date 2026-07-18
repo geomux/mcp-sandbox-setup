@@ -1,0 +1,7 @@
+# .gitattributes
+# Keep the files with volume mount between container and host OS as LF (not CRLF).
+
+* text=auto
+*.conf test eol=lf
+*.toml text eol=lf
+Dockerfile text eol=lf
