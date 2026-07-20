@@ -6,7 +6,7 @@ Docker Compose stack that builds two containers on a remote host: an nginx rever
 
 ```
 System:  {user} <--> mcp-client-console <--> internet <--> {host:80} <--> nginx <--> mcp-server-remote <--> tools
-Stack:   docker-compose.yml <--> Dockerfile <--> config/config.toml + nginx/default.conf
+Stack:   docker-compose.yml <--> Dockerfile <--> config/config.toml + nginx/mcp.conf
 ```
 
 ## Repo Layout
@@ -16,7 +16,7 @@ Stack:   docker-compose.yml <--> Dockerfile <--> config/config.toml + nginx/defa
 | -------------------- | -------------------------------------------------------------------- |
 | `docker-compose.yml` | Declares both containers, the network between them, and the mounts   |
 | `Dockerfile`         | Builds the MCP server image (python base + pip install)              |
-| `nginx/default.conf` | nginx config, proxies host port 80 to the server container           |
+| `nginx/mcp.conf` | nginx config, proxies host port 80 to the server container           |
 | `config/config.toml` | Server config, mounted into the container (edit this before first run) |
 
 ## User Guide | Installation
@@ -29,11 +29,17 @@ cd mcp-sandbox-setup
 # edit config/config.toml first (see Configuration below)
 docker compose up -d --build
 ```
-**Install for Docker Engine and Docker Compose prior (if needed)**
-```bash
-apt-get update && apt-get install -y curl
-curl -fsSL https://get.docker.com | sh
-```
+
+## User Guide | Prerequisites (any OS)
+
+Works on Linux, macOS, and Windows... the actual sandbox containers are Linux.
+
+| Host OS | Install Docker |
+| ------- | -------------- |
+| Linux   | `sudo curl -fsSL https://get.docker.com \| sh` |
+| macOS   | [Docker Desktop for Mac](https://docs.docker.com/desktop/setup/install/mac-install/) 
+| Windows | [Docker Desktop for Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+**On Windows, Install Docker commands to be run through WSL**
 
 ## User Guide | Configuration
 
