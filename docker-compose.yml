@@ -5,18 +5,18 @@ services:
 
     nginx:
         image: nginx:1.27
-        container_name: nginx
+        container_name: nginx_sandbox
         ports:
             - "80:80"
         volumes:
-            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+            - ./nginx/mcp.conf:/etc/nginx/conf.d/default.conf:ro
         depends_on:
             - mcp-server-remote
         restart: unless-stopped
 
     mcp-server-remote:
         build: .
-        container_name: mcp-server-remote
+        container_name: mcp-server-remote_sandbox
         volumes:
             - ./config/config.toml:/root/.config/mcp-server-remote/config.toml:ro
         restart: unless-stopped
