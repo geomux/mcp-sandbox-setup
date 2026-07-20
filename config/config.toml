@@ -10,4 +10,131 @@ path = "/mcp"           # default for URL
 [auth]
 token = "paste-here"    # :~$ openssl rand -hex 32, then paste result here
 
+# client console elastic IP and/or domain name
+allowed_origins = ["123.456.789.10", "https://your-domain"]
+
+[tools] # configurable tool permissions (uses principle of least privileged)
+# require human [y/n] approval on client side before any tool or command tagged destructive runs
+confirm_destructive_actions = true
+# "/" allows full machine control (REMOVE FOR XTRA SECURITY), "/123abc" specifies actual path
+allowed_roots = [
+    "/",
+    "/var/log"
+]
+
+[tools.commands]
+# allowed commands
+linux = [
+    # who / what am i
+    "hostname",
+    "whoami",
+    "id",
+    "uname",
+    "uptime",
+    "hostnamectl",
+    # cpu / memory / load
+    "lscpu",
+    "nproc",
+    "free",
+    "vmstat",
+    "top",
+    # disk
+    "df",
+    "lsblk",
+    "mount",
+    # network
+    "ip",
+    "ss",
+    # processes
+    "ps",
+    # services & logs (systemd)
+    "systemctl",
+    "journalctl",
+    # packages
+    "dpkg",
+    # time
+    "date",
+    "timedatectl",
+    # sessions
+    "who",
+    "w",
+    "last",
+    # file inspection, read-only readers, /etc/os-release via cat
+    "ls",
+    "cat",
+    "head",
+    "tail",
+    "grep",
+    "stat",
+    "wc",
+    "du",
+    "pwd",
+    "which",
+    "find", # POSSIBLE BLACK SHEEP - bypasses a lot of security in limited access to filesystem
+]
+
+windows = [
+    # who / what am i
+    "hostname",
+    "whoami",
+    "Get-ComputerInfo",
+    # cpu / memory / os
+    "Get-CimInstance",
+    # disk
+    "Get-PSDrive",
+    "Get-Volume",
+    # network
+    "Get-NetIPConfiguration",
+    "Get-NetTCPConnection",
+    # processes & services
+    "Get-Process",
+    "Get-Service",
+    # time
+    "Get-Date",
+    # file inspection, ls/cat/dir/type resolve to these
+    "Get-ChildItem", # POSSIBLE BLACK SHEEP - bypasses a lot of security in limited access to filesystem
+    "Get-Content",
+    "Select-String",
+]
+
+macos = [
+    # who / what am i
+    "hostname",
+    "whoami",
+    "id",
+    "uname",
+    "sw_vers",
+    "uptime",
+    # cpu / memory
+    "sysctl",
+    "vm_stat",
+    "top",
+    "system_profiler",
+    # disk
+    "df",
+    "diskutil",
+    # network
+    "ifconfig",
+    "netstat",
+    "route",
+    "scutil",
+    # processes & services
+    "ps",
+    "launchctl",
+    # time
+    "date",
+    # file inspection
+    "ls",
+    "cat",
+    "head",
+    "tail",
+    "grep",
+    "stat",
+    "wc",
+    "du",
+    "pwd",
+    "which",
+    "find", # POSSIBLE BLACK SHEEP - bypasses a lot of security in limited access to filesystem
+]
+
 
