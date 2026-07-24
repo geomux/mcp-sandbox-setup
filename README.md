@@ -27,7 +27,7 @@ Requires Docker Engine and the Docker Compose plugin on the host.
 git clone https://github.com/geomux/mcp-sandbox-setup.git
 cd mcp-sandbox-setup
 # edit config/config.toml first (see Configuration below)
-docker compose up -d --build
+sudo docker compose up -d --build
 ```
 
 ## User Guide | Prerequisites (any OS)
@@ -56,19 +56,19 @@ path = "/mcp"       # Leave this alone. /mcp is default for dependencies.
 Generate a token with `openssl rand -hex 32` and paste it into `[auth]`, same drill as the server repo. Restart the stack after any config change:
 
 ```bash
-docker compose restart mcp-server-remote
+sudo docker compose restart mcp-server-remote
 ```
 
 ## User Guide | Operation
 
 | Command                                       | What it does                                  |
 | --------------------------------------------- | --------------------------------------------- |
-| `docker compose up -d --build`                | Build images and start both containers        |
-| `docker compose logs -f mcp-server-remote`    | Tail the MCP server logs                      |
-| `docker compose exec mcp-server-remote bash`         | Shell into the server container (no SSH needed) |
-| `docker compose down`                         | Stop and remove the stack                     |
+| `sudo docker compose up -d --build`                | Build images and start both containers        |
+| `sudo docker compose logs -f mcp-server-remote`    | Tail the MCP server logs                      |
+| `sudo docker compose exec mcp-server-remote bash`         | Shell into the server container (no SSH needed) |
+| `sudo docker compose down`                         | Stop and remove the stack                     |
 
-Only nginx publishes a port to the host. The MCP server container has no published ports, it is only accessible via the internal Docker network. If the sandbox gets wrecked by bad code or prompt injection, `docker compose down && docker compose up -d --build` creates a clean slate again.
+Only nginx publishes a port to the host. The MCP server container has no published ports, it is only accessible via the internal Docker network. If the sandbox gets wrecked by bad code or prompt injection, `sudo docker compose down && sudo docker compose up -d --build` creates a clean slate again.
 
 ## Related / Required Repos
 
@@ -82,5 +82,5 @@ Only nginx publishes a port to the host. The MCP server container has no publish
 - [x] Write nginx reverse proxy config
 - [x] Write docker-compose.yml wiring both containers
 - [ ] Connect from mcp-client-console through nginx end to end
-- [ ] Harden (non-root container user, TLS on nginx)
-- [ ] Call this repo from Terraform
+- [ ] Clean it up (non-root container user, TLS on nginx)
+- [ ] Call this repo from a Terraform recipe
