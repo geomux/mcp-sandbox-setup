@@ -81,6 +81,6 @@ Only nginx publishes a port to the host. The MCP server container has no publish
 - [x] Write Dockerfile for mcp-server-remote
 - [x] Write nginx reverse proxy config
 - [x] Write docker-compose.yml wiring both containers
-- [ ] Connect from mcp-client-console through nginx end to end
+- [x] Connect from mcp-client-console through nginx end to end (over the internet, into the container)
 - [ ] Clean it up (non-root container user, TLS on nginx)
 - [ ] Call this repo from a Terraform recipe
