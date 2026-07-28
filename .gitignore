@@ -1,0 +1,5 @@
+# .gitignore
+# Ignore listed files below when commits are pushed to github repo.
+
+# Ignore live config.toml file
+config/config.toml
