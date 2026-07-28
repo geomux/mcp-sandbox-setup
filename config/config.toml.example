@@ -1,6 +1,11 @@
 # config.toml
 # Host side editable config file bind mounted to mcp-server-remote package config file inside server container
 
+
+# ---NOTE---
+# Remove the .example from this files name prior to running the Docker Compose...
+---
+
 [server]
 name = "Sandbox_1"      # change as desired (recommend to match name used client side for this box)
 host = "0.0.0.0"        # open to everything outside container (i.e. nginx reverse proxy)
