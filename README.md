@@ -31,8 +31,7 @@ cd mcp-sandbox-setup/config && cp config.toml.example config.toml && openssl ran
 ```
 *COPY FRESHLY GENERATED TOKEN TO CLIPBOARD, PASTE INTO [auth] BELOW*
 ```bash
-nano config.toml
-cd mcp-sandbox-setup
+nano config.toml && cd ..
 sudo docker compose up -d --build
 ```
 
