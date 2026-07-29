@@ -23,10 +23,16 @@ Stack:   docker-compose.yml <--> Dockerfile <--> config/config.toml + nginx/mcp.
 
 Requires Docker Engine and the Docker Compose plugin on the host.
 
+*MUST FOLLOW DIRECTIONS BELOW TO PROPERLY SETUP THE SANDBOX*
+
 ```bash
 git clone https://github.com/geomux/mcp-sandbox-setup.git
+cd mcp-sandbox-setup/config && cp config.toml.example config.toml && openssl rand -hex 32
+```
+*COPY FRESHLY GENERATED TOKEN TO CLIPBOARD, PASTE INTO [auth] BELOW*
+```bash
+nano config.toml
 cd mcp-sandbox-setup
-# edit config/config.toml first (see Configuration below)
 sudo docker compose up -d --build
 ```
 
