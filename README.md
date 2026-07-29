@@ -30,6 +30,7 @@ git clone https://github.com/geomux/mcp-sandbox-setup.git
 cd mcp-sandbox-setup/config && cp config.toml.example config.toml && openssl rand -hex 32
 ```
 *COPY FRESHLY GENERATED TOKEN TO CLIPBOARD, PASTE INTO [auth] BELOW*
+**Populate config file as desired while inside the file during next step**
 ```bash
 nano config.toml && cd ..
 sudo docker compose up -d --build
