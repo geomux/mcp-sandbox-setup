@@ -73,6 +73,7 @@ sudo docker compose restart mcp-server-remote
 | `sudo docker compose logs -f mcp-server-remote`    | Tail the MCP server logs                      |
 | `sudo docker compose exec mcp-server-remote bash`         | Shell into the server container (no SSH needed) |
 | `sudo docker compose down`                         | Stop and remove the stack                     |
+
 **Clean Up Operations (general docker clean-house stuff)**
 | Command                                       | What it does                                  |
 | --------------------------------------------- | --------------------------------------------- |
