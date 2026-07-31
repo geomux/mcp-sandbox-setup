@@ -73,6 +73,12 @@ sudo docker compose restart mcp-server-remote
 | `sudo docker compose logs -f mcp-server-remote`    | Tail the MCP server logs                      |
 | `sudo docker compose exec mcp-server-remote bash`         | Shell into the server container (no SSH needed) |
 | `sudo docker compose down`                         | Stop and remove the stack                     |
+**Clean Up Operations (general docker clean-house stuff)**
+| Command                                       | What it does                                  |
+| --------------------------------------------- | --------------------------------------------- |
+| `sudo docker image prune -f`                | Delete untagged "<None>" images from past builds        |
+| `sudo docker builder prune -f`                | Delete cache from past builds        |
+
 
 Only nginx publishes a port to the host. The MCP server container has no published ports, it is only accessible via the internal Docker network. If the sandbox gets wrecked by bad code or prompt injection, `sudo docker compose down && sudo docker compose up -d --build` creates a clean slate again.
 
