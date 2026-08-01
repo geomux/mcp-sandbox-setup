@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
     python3 pipx \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pipx install mcp-server-remote
+ARG MCP_SERVER_VERSION=0.3.5
+RUN pipx install "mcp-server-remote==${MCP_SERVER_VERSION}"
 
 ENV PATH="/root/.local/bin:$PATH"
 
