@@ -1,141 +1,16 @@
 # config.toml
-# Host side editable config file bind mounted to mcp-server-remote package config file inside server container
-
+# Host side editable config file bind mounted to mcp-server-remote package config file inside server container.
 
 # ---NOTE---
 # Remove the .example from this files name prior to running the Docker Compose...
 
 [server]
-name = "Sandbox_1"      # change as desired (recommend to match name used client side for this box)
-host = "0.0.0.0"        # open to everything outside container (i.e. nginx reverse proxy)
-port = 9000             # default port for server
-path = "/mcp"           # default for URL
+name = "Sandbox_1"
+host = "0.0.0.0"
 
 [auth]
-token = "paste-here"    # :~$ openssl rand -hex 32, then paste result here
+token = "paste-here"
 
-[tools] # configurable tool permissions (uses principle of least privileged)
-# require human [y/n] approval on client side before any tool or command tagged destructive runs
-confirm_destructive_actions = true
-# "/" allows full machine control (REMOVE FOR XTRA SECURITY), "/123abc" specifies actual path
-allowed_roots = [
-    "/",
-    "/var/log"
-]
-
-[tools.commands]
-# allowed commands
-linux = [
-    # who / what am i
-    "hostname",
-    "whoami",
-    "id",
-    "uname",
-    "uptime",
-    "hostnamectl",
-    # cpu / memory / load
-    "lscpu",
-    "nproc",
-    "free",
-    "vmstat",
-    "top",
-    # disk
-    "df",
-    "lsblk",
-    "mount",
-    # network
-    "ip",
-    "ss",
-    # processes
-    "ps",
-    # services & logs (systemd)
-    "systemctl",
-    "journalctl",
-    # packages
-    "dpkg",
-    # time
-    "date",
-    "timedatectl",
-    # sessions
-    "who",
-    "w",
-    "last",
-    # file inspection, read-only readers, /etc/os-release via cat
-    "ls",
-    "cat",
-    "head",
-    "tail",
-    "grep",
-    "stat",
-    "wc",
-    "du",
-    "pwd",
-    "which",
-    "find", # POSSIBLE BLACK SHEEP - bypasses a lot of security in limited access to filesystem
-]
-
-windows = [
-    # who / what am i
-    "hostname",
-    "whoami",
-    "Get-ComputerInfo",
-    # cpu / memory / os
-    "Get-CimInstance",
-    # disk
-    "Get-PSDrive",
-    "Get-Volume",
-    # network
-    "Get-NetIPConfiguration",
-    "Get-NetTCPConnection",
-    # processes & services
-    "Get-Process",
-    "Get-Service",
-    # time
-    "Get-Date",
-    # file inspection, ls/cat/dir/type resolve to these
-    "Get-ChildItem", # POSSIBLE BLACK SHEEP - bypasses a lot of security in limited access to filesystem
-    "Get-Content",
-    "Select-String",
-]
-
-macos = [
-    # who / what am i
-    "hostname",
-    "whoami",
-    "id",
-    "uname",
-    "sw_vers",
-    "uptime",
-    # cpu / memory
-    "sysctl",
-    "vm_stat",
-    "top",
-    "system_profiler",
-    # disk
-    "df",
-    "diskutil",
-    # network
-    "ifconfig",
-    "netstat",
-    "route",
-    "scutil",
-    # processes & services
-    "ps",
-    "launchctl",
-    # time
-    "date",
-    # file inspection
-    "ls",
-    "cat",
-    "head",
-    "tail",
-    "grep",
-    "stat",
-    "wc",
-    "du",
-    "pwd",
-    "which",
-    "find", # POSSIBLE BLACK SHEEP - bypasses a lot of security in limited access to filesystem
-]
-
-
+[tools]
+# "unrestricted" allows MODEL full shell access to the remote box. "true" will enable bypassing [tools.commands] in the mcp server default tools allow list.
+unrestricted = true # default is turned on for sandbox container setup. NEVER set to true on a real host...
