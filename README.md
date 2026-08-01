@@ -55,8 +55,6 @@ The server config lives in this repo at `config/config.toml` and is bind mounted
 [server]
 name = "Sandbox_1"  # Label for this sandbox
 host = "0.0.0.0"    # Bind all container interfaces so nginx can reach it. Do NOT use 127.0.0.1 here.
-port = 9000         # Port nginx proxies to
-path = "/mcp"       # Leave this alone. /mcp is default for dependencies.
 ```
 
 Generate a token with `openssl rand -hex 32` and paste it into `[auth]`, same drill as the server repo. Restart the stack after any config change:
