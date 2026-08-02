@@ -3,3 +3,6 @@
 
 # Ignore live config.toml file
 config/config.toml
+
+# Ignore generated TLS keypair
+nginx/tls/
