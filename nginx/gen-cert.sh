@@ -28,3 +28,4 @@ echo
 echo "Created nginx/tls/mcp.crt and nginx/tls/mcp.key"
 echo "Valid for ${CN}, ${CN}.local, localhost, ${IP}, 127.0.0.1"
 echo "Copy the .crt (NEVER the .key) to any machine that will connect directly."
+
