@@ -1,7 +1,14 @@
 # .gitattributes
+
+
 # Keep the files with volume mount between container and host OS as LF (not CRLF).
 
 * text=auto
 *.conf text eol=lf
 *.toml text eol=lf
 Dockerfile text eol=lf
+
+
+# Override GitHub to show Dockerfile as main language for this Repo (it is this focus, not the gen-cert.sh script)
+nginx/gen-cert.sh linguist-detectable=false
+nginx/*.conf linguide-detectable=false
