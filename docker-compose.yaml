@@ -20,7 +20,7 @@ services:
             context: .
             no_cache: true
             pull: true
-        container_name: mcp-server-remote_sandbox
+        container_name: mcp_sandbox
         volumes:
             - ./config/config.toml:/root/.config/mcp-server-remote/config.toml:ro
         restart: unless-stopped
